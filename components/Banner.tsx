@@ -9,7 +9,7 @@ export default function Banner() {
   return (
     <View style={styles.banner}>
           <Text style={styles.logo}>
-            <i>Trippy</i>  
+            Trippy 
           </Text>
           <FontAwesome name='user' size={21} color={Colors.secColor} style={styles.icon} />
     </View>
@@ -20,14 +20,13 @@ const styles = StyleSheet.create({
     banner: {
         backgroundColor: Colors.mainColor,
         textAlign: 'center',
-        padding: '10px 10px',
         width: '100%',
     },
     logo: {
         fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'allan',
-        fontStyle: 'normal',
+        fontStyle: 'italic',
         letterSpacing: 1,
         color: Colors.white
     },

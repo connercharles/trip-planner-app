@@ -16,7 +16,7 @@ export default function HomeScreen() {
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <TripCard title="test" dates="Mar 3-Mar 7"/>
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-      <AddButton></AddButton>
+      <AddButton/>
     </View>
   );
 }

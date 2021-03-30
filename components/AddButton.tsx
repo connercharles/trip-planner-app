@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors.mainColor,
         borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-        width: Dimensions.get('window').width * 0.025,
-        height: Dimensions.get('window').width * 0.025,
+        width: 60,
+        height: 60,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 0,
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     text: {
       color: Colors.white,
       fontSize: 32,
-      height: 'inherit',
-      lineHeight: Dimensions.get('window').width * 0.025 * 0.83
+      height: 60,
+      lineHeight: 50
     }
   });
