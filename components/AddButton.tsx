@@ -1,6 +1,6 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { Dimensions, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 
 import Colors from '../constants/Colors';
@@ -8,7 +8,7 @@ import Colors from '../constants/Colors';
 export default function AddButton() {
   return (
     <TouchableOpacity onPress={openPopup} style={styles.button}>
-        <Text>
+        <Text style={styles.text}>
           +
         </Text>
     </TouchableOpacity>
@@ -24,10 +24,18 @@ function openPopup() {
 const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors.mainColor,
-        borderRadius: '1em',
+        borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
+        width: Dimensions.get('window').width * 0.025,
+        height: Dimensions.get('window').width * 0.025,
+        justifyContent: 'center',
+        alignItems: 'center',
         borderWidth: 0,
-        color: Colors.white,
-        width: '1em',
-        alignItems: 'center'
+        textAlign: 'center',
+      },
+    text: {
+      color: Colors.white,
+      fontSize: 32,
+      height: 'inherit',
+      lineHeight: Dimensions.get('window').width * 0.025 * 0.83
     }
   });

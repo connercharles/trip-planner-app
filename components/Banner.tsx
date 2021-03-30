@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     logo: {
-        fontSize: '2em',
+        fontSize: 20,
         fontWeight: 'bold',
         fontFamily: 'allan',
         fontStyle: 'normal',
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         color: Colors.white
     },
     icon: {
-        borderRadius: '1em',
+        borderRadius: 1,
         borderWidth: 1,
         borderColor: Colors.secColor,
     }
