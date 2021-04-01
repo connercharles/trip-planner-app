@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
       marginLeft: -30,
       borderRadius: 1000,
       borderWidth: 1,
-      borderColor: Colors.secColor,
+      borderColor: Colors.white,
       backgroundColor: Colors.white,
       alignSelf:'center',
       marginRight:10

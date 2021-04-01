@@ -1,26 +1,34 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
 import Banner from '../components/Banner';
 import Popup from '../components/Popup';
+import React, { useState } from 'react';
 
 
-class TripScreen extends React.Component {
+export default function TripScreen({ navigation }: { navigation: any }) {
+  const [popupShow, setPopupShow] = useState(false);
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Banner showBack={true}/>
-        {/* <TripCard title="test" dates="Mar 3-Mar 7"/> */}
-        <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-      </View>
-    );
-  }
+  const showPopup = () => {
+    console.log("Height" + Dimensions.get('window').height);
+    console.log("Wid" + Dimensions.get('window').width);
+    setPopupShow(true);
+  };
+  const hidePopup = () => setPopupShow(false);
+
+
+  return (
+    <View style={styles.container}>
+      <Banner showBack={true}/>
+      {/* <TripCard title="test" dates="Mar 3-Mar 7"/> */}
+      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Popup popupShow={popupShow}/>
+      <AddButton onPress={showPopup}/>
+    </View>
+  );
 }
 
 
@@ -50,5 +58,3 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
-
-export default TripScreen;

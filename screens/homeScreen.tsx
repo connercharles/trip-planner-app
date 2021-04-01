@@ -1,9 +1,7 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { Dimensions, TouchableOpacity, StyleSheet, Button } from 'react-native';
+import { Dimensions, TouchableOpacity, StyleSheet, Button, View, Text } from 'react-native';
 import Modal from 'react-native-modal';
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
@@ -49,7 +47,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         
         <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
           <View style={{backgroundColor:Colors.white, marginVertical:50 ,marginHorizontal:10, padding:40, borderRadius:10, flex:1}}>
-            <Text style= {{ fontSize: 40 }} >New Trip</Text>
+            <Text style={{ fontSize: 40 }}>New Trip</Text>
             <View style={{justifyContent:'center', marginTop:50}}>
               <TextInput 
                 style={styles.input}
@@ -63,11 +61,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
           </View>
         </Modal>
       </View>
-      <TouchableOpacity onPress={showPopup} style={styles.button}>
-        <Text style={styles.text}>
-          +
-        </Text>
-      </TouchableOpacity>
+      <AddButton onPress={showPopup}/>
     </View>
   );
 }
@@ -93,24 +87,6 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginHorizontal: '5%',
     backgroundColor: Colors.pageBackground,
-  },
-  button: {
-    position:'absolute',
-    bottom:20,
-    right:20,
-    backgroundColor: Colors.mainColor,
-    borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
-    width: 60,
-    height: 60,
-    justifyContent:'center',
-    alignItems: 'center',
-    borderWidth: 0,
-  },
-  text: {
-    color: Colors.white,
-    fontSize: 32,
-    height: 60,
-    lineHeight: 50
   },
   input: {
     height: 40,
