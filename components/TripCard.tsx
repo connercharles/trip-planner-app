@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 
   },
   card: {
-      
+      width: 10,
+      height: 10
   }
 });
