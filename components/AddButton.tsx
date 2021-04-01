@@ -1,17 +1,21 @@
 import * as WebBrowser from 'expo-web-browser';
-import React, { useState } from 'react';
-import { Dimensions, StyleSheet, TouchableOpacity, Text, View } from 'react-native';
-import Modal from 'react-native-modal';
-import FAB from 'react-native-fab'
+import React from 'react';
+import { Dimensions, StyleSheet, TouchableOpacity, Text, GestureResponderEvent } from 'react-native';
+
 
 import Colors from '../constants/Colors';
 import Popup from './Popup';
 
-class AddButton extends React.Component {
-// const AddButton = (props) => {
-// function AddButton(props) {
-  // constructor(props){
-  //   super(props);
+export default function AddButton(memoizedCallback: ((event: GestureResponderEvent) => void) | undefined) {
+
+  return (
+    <TouchableOpacity onPress={memoizedCallback} style={styles.button}>
+        <Text style={styles.text}>
+          +
+        </Text>
+    </TouchableOpacity>
+  );
+}
 
   //   this.toggleModal = this.toggleModal.bind(this);
   // }
@@ -25,20 +29,20 @@ class AddButton extends React.Component {
   //     props.showPopup = !props.showPopup;
   // };
 
-  render() {
-    return (
-      <FAB buttonColor="red" iconTextColor="#FFFFFF" 
-            onClickAction={() => {console.log("FAB pressed")}} 
-            visible={true} />
+  // render() {
+  //   return (
+  //     <FAB buttonColor="red" iconTextColor="#FFFFFF" 
+  //           onClickAction={() => {console.log("FAB pressed")}} 
+  //           visible={true} />
             
-      // <TouchableOpacity onPress={toggleModal} style={styles.button}>
+  //     // <TouchableOpacity onPress={toggleModal} style={styles.button}>
 
-      //     <Text style={styles.text}>
-      //       +
-      //     </Text>
-      // </TouchableOpacity>
-    );
-  }
+  //     //     <Text style={styles.text}>
+  //     //       +
+  //     //     </Text>
+  //     // </TouchableOpacity>
+  //   );
+  // }
   
   // openPopup = () => {
   //   this.setState({ showPopup: true });
@@ -48,7 +52,7 @@ class AddButton extends React.Component {
   //     // );     
   //   }
 
-}
+// }
     
 const styles = StyleSheet.create({
     button: {
@@ -69,4 +73,4 @@ const styles = StyleSheet.create({
     }
   });
 
-  export default AddButton;
+  // export default AddButton;
