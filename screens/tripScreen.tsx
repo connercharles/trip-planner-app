@@ -15,8 +15,8 @@ class TripScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Banner/>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
+        <Banner showBack={true}/>
+        {/* <TripCard title="test" dates="Mar 3-Mar 7"/> */}
         <EditScreenInfo path="/screens/TabOneScreen.tsx" />
       </View>
     );

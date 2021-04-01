@@ -1,14 +1,16 @@
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { GestureResponderEvent, StyleSheet, TouchableOpacity } from 'react-native';
+import { GestureHandlerGestureEvent } from 'react-native-gesture-handler';
 
 import Colors from '../constants/Colors';
 import { MonoText } from './StyledText';
 import { Text, View } from './Themed';
 
-export default function TripCard({ title, dates }: { title: string, dates: string }) {
+export default function TripCard({ title, dates, onPress }: 
+                                { title: string, dates: string, onPress: any }) {
   return (
-    <TouchableOpacity onPress={openTrip} style={styles.card}>
+    <TouchableOpacity onPress={onPress} style={styles.card}>
       <View>
           <Text style={styles.titleText}>
               {title}
@@ -23,6 +25,8 @@ export default function TripCard({ title, dates }: { title: string, dates: strin
 }
 
 function openTrip() {
+  
+
   WebBrowser.openBrowserAsync(
     'https://docs.expo.io/get-started/create-a-new-app/#opening-the-app-on-your-phonetablet'
   );

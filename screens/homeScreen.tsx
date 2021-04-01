@@ -9,10 +9,9 @@ import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
 import Banner from '../components/Banner';
 import { TextInput } from 'react-native-gesture-handler';
-import FAB from 'react-native-fab';
 
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }: { navigation: any }) {
 
   const [tripList, setTripList] = useState([]);
 
@@ -40,14 +39,13 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Banner/>
-      {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
+      <Banner showBack={false}/>
       <View testID="cardHolder" style= {styles.cardHolder}>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
-        <TripCard title="test" dates="Mar 3-Mar 7"/>
+        <TripCard title="test" dates="Mar 3-Mar 7" onPress={() => navigation.push('Trip')}/>
+        <TripCard title="test" dates="Mar 3-Mar 7" onPress={() => navigation.push('Trip')}/>
+        <TripCard title="test" dates="Mar 3-Mar 7" onPress={() => navigation.push('Trip')}/>
+        <TripCard title="test" dates="Mar 3-Mar 7" onPress={() => navigation.push('Trip')}/>
+        <TripCard title="test" dates="Mar 3-Mar 7" onPress={() => navigation.push('Trip')}/>
         
         <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
           <View style={{backgroundColor:Colors.white, marginVertical:50 ,marginHorizontal:10, padding:40, borderRadius:10, flex:1}}>
@@ -74,23 +72,9 @@ export default function HomeScreen() {
   );
 }
 
-// export default function HomeScreen() {
-//   return (
-//     <View style={styles.container}>
-//       <Banner/>
-//       <Text style={styles.title}>Trippy</Text>
-//       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-//       <TripCard title="test" dates="Mar 3-Mar 7"/>
-//       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-//       <AddButton/>
-//     </View>
-//   );
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     backgroundColor: Colors.pageBackground,
   },
   title: {
@@ -108,10 +92,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'flex-start',
     marginHorizontal: '5%',
-    
-
     backgroundColor: Colors.pageBackground,
-    // alignItems: 'center'
   },
   button: {
     position:'absolute',

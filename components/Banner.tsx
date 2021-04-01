@@ -1,13 +1,24 @@
 import { FontAwesome } from '@expo/vector-icons';
 import React from 'react';
-import { Dimensions, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import Colors from '../constants/Colors';
 
 
-export default function Banner() {
+export default function Banner({ showBack }: { showBack: boolean }) {
+  const navigation = useNavigation();
+
+  let backBtn;
+  if(showBack) {
+    backBtn = <TouchableOpacity style={styles.back} onPress={() => navigation.navigate('Home')}>
+                <FontAwesome name='arrow-left' size={21} color={Colors.white} />
+              </TouchableOpacity>
+  }
+
   return (
     <View style={styles.banner}>
+          {backBtn}
           <Text style={styles.logo}>
             Trippy 
           </Text>
@@ -24,22 +35,19 @@ const styles = StyleSheet.create({
       width: '100%',
       display:'flex',
       flexDirection:'row',
-      // flex:1,
-      justifyContent:'flex-start',
-      // marginBottom: Dimensions.get('window').height - (Dimensions.get('window').height - 485)
-    },
+      height: 50,
+      },
     logo: {
       flex:1,
       flexBasis:'auto',
       textAlign:'center',
-      paddingTop:20,
       fontSize: 20,
       fontWeight: 'bold',
       fontFamily: 'allan',
       fontStyle: 'italic',
       letterSpacing: 1,
       color: Colors.white,
-      paddingBottom: 5
+      alignSelf:'center'
     },
     circle: {
       width: 30,
@@ -48,18 +56,17 @@ const styles = StyleSheet.create({
       borderRadius: 1000,
       borderWidth: 1,
       borderColor: Colors.secColor,
-      alignSelf:'flex-end',
-      textAlign:'center'
+      backgroundColor: Colors.white,
+      alignSelf:'center',
+      marginRight:10
     },
     icon: {
-      // width: 30,
-      lineHeight: 20,
+      alignSelf:'center',
+      lineHeight: 30,
       height: 30
-      // alignSelf:'center'
-        // paddingLeft: 20,
-        // marginLeft:20,
-        // margin: 50,
-        // alignContent:'flex-end',
-        // justifyContent:'flex-end'
+    },
+    back: {
+      paddingLeft:10,
+      alignSelf:'center'
     }
 });
