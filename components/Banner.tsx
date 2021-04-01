@@ -10,8 +10,10 @@ export default function Banner() {
     <View style={styles.banner}>
           <Text style={styles.logo}>
             Trippy 
-            <FontAwesome name='user' size={21} color={Colors.secColor} style={styles.icon} />
           </Text>
+          <View style={styles.circle}>
+            <FontAwesome name='user' size={21} color={Colors.secColor} style={styles.icon} />
+          </View>
     </View>
   );
 }
@@ -20,11 +22,15 @@ const styles = StyleSheet.create({
     banner: {
       backgroundColor: Colors.mainColor,
       width: '100%',
-      flex:1,
+      display:'flex',
+      flexDirection:'row',
+      // flex:1,
       justifyContent:'flex-start',
-      marginBottom: Dimensions.get('window').height - (Dimensions.get('window').height - 485)
+      // marginBottom: Dimensions.get('window').height - (Dimensions.get('window').height - 485)
     },
     logo: {
+      flex:1,
+      flexBasis:'auto',
       textAlign:'center',
       paddingTop:20,
       fontSize: 20,
@@ -32,15 +38,28 @@ const styles = StyleSheet.create({
       fontFamily: 'allan',
       fontStyle: 'italic',
       letterSpacing: 1,
-      color: Colors.white
+      color: Colors.white,
+      paddingBottom: 5
+    },
+    circle: {
+      width: 30,
+      height: 30,
+      marginLeft: -30,
+      borderRadius: 1000,
+      borderWidth: 1,
+      borderColor: Colors.secColor,
+      alignSelf:'flex-end',
+      textAlign:'center'
     },
     icon: {
-        paddingLeft: 20,
-        marginLeft:20,
-        borderRadius: 1,
-        borderWidth: 1,
-        borderColor: Colors.secColor,
-        alignContent:'flex-end',
-        justifyContent:'flex-end'
+      // width: 30,
+      lineHeight: 20,
+      height: 30
+      // alignSelf:'center'
+        // paddingLeft: 20,
+        // marginLeft:20,
+        // margin: 50,
+        // alignContent:'flex-end',
+        // justifyContent:'flex-end'
     }
 });

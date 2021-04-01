@@ -9,6 +9,7 @@ import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
 import Banner from '../components/Banner';
 import { TextInput } from 'react-native-gesture-handler';
+import FAB from 'react-native-fab';
 
 
 export default function HomeScreen() {
@@ -40,8 +41,12 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Banner/>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      {/* <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" /> */}
       <View testID="cardHolder" style= {styles.cardHolder}>
+        <TripCard title="test" dates="Mar 3-Mar 7"/>
+        <TripCard title="test" dates="Mar 3-Mar 7"/>
+        <TripCard title="test" dates="Mar 3-Mar 7"/>
+        <TripCard title="test" dates="Mar 3-Mar 7"/>
         <TripCard title="test" dates="Mar 3-Mar 7"/>
         
         <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
@@ -59,12 +64,12 @@ export default function HomeScreen() {
             </View>
           </View>
         </Modal>
-        <TouchableOpacity onPress={showPopup} style={styles.button}>
-          <Text style={styles.text}>
-            +
-          </Text>
+      </View>
+      <TouchableOpacity onPress={showPopup} style={styles.button}>
+        <Text style={styles.text}>
+          +
+        </Text>
       </TouchableOpacity>
-    </View>
     </View>
   );
 }
@@ -85,7 +90,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    // justifyContent: 'center',
     backgroundColor: Colors.pageBackground,
   },
   title: {
@@ -98,12 +103,20 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   cardHolder: {
-    alignItems: 'center'
+    flex: 2,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'flex-start',
+    marginHorizontal: '5%',
+    
+
+    backgroundColor: Colors.pageBackground,
+    // alignItems: 'center'
   },
   button: {
     position:'absolute',
-    bottom:10,
-    right:10,
+    bottom:20,
+    right:20,
     backgroundColor: Colors.mainColor,
     borderRadius: Math.round(Dimensions.get('window').width + Dimensions.get('window').height) / 2,
     width: 60,

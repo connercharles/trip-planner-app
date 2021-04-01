@@ -24,8 +24,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF",
-        "softwareKeyboardLayoutMode": "adjustPan"
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {

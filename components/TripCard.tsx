@@ -8,16 +8,16 @@ import { Text, View } from './Themed';
 
 export default function TripCard({ title, dates }: { title: string, dates: string }) {
   return (
-      <TouchableOpacity onPress={openTrip} style={styles.card}>
-    <View>
-        <Text style={styles.titleText}>
-            {title}
-        </Text>
+    <TouchableOpacity onPress={openTrip} style={styles.card}>
+      <View>
+          <Text style={styles.titleText}>
+              {title}
+          </Text>
 
-        <Text style={styles.dateText}>
-            {dates}
-        </Text>
-    </View>
+          <Text style={styles.dateText}>
+              {dates}
+          </Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -30,8 +30,8 @@ function openTrip() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
+    // flex: 1,
+    // backgroundColor: '#fff',
   },
   titleText: {
 
@@ -40,7 +40,14 @@ const styles = StyleSheet.create({
 
   },
   card: {
-      width: 10,
-      height: 10
+      width: '45%',
+      margin: '2.5%',
+      padding: '1%',
+      borderRadius: 10,
+      borderWidth: 1,
+      borderColor: Colors.pageBackground,
+      backgroundColor: '#fff',
+
+      // height: 300
   }
 });
