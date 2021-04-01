@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 
 // class Popup extends React.Component {
 // function Popup() {
-const Popup = (props) => {
+const Popup = (props: { showPopup: boolean | undefined; }) => {
     // constructor(props){
     //     super(props);
     

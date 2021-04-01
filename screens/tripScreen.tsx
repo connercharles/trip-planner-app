@@ -23,6 +23,16 @@ class TripScreen extends React.Component {
   }
 }
 
+
+{/* <View style={styles.container}>
+<Banner/>
+<Text style={styles.title}>Trippy</Text>
+<View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+<TripCard title="test" dates="Mar 3-Mar 7"/>
+<AddButton/>
+<Popup></Popup>
+</View> */}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
