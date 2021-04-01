@@ -5,15 +5,18 @@ import { StyleSheet, View, Text } from 'react-native';
 import Colors from '../constants/Colors';
 
 
-export default function Banner() {
-  return (
-    <View style={styles.banner}>
-          <Text style={styles.logo}>
-            Trippy 
-          </Text>
-          <FontAwesome name='user' size={21} color={Colors.secColor} style={styles.icon} />
-    </View>
-  );
+class Banner extends React.Component {
+  render() {
+    return (
+      <View style={styles.banner}>
+            <Text style={styles.logo}>
+              Trippy 
+            </Text>
+            <FontAwesome name='user' size={21} color={Colors.secColor} style={styles.icon} />
+      </View>
+    );
+  }
+  
 }
 
 const styles = StyleSheet.create({
@@ -36,3 +39,5 @@ const styles = StyleSheet.create({
         borderColor: Colors.secColor,
     }
 });
+
+export default Banner;

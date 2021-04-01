@@ -11,14 +11,14 @@ export default {
               HomeScreen: 'home',
             }
           },
-          TabOne: {
+          Popup: {
             screens: {
-              TabOneScreen: 'one',
+              Popup: 'popup',
             },
           },
-          TabTwo: {
+          Trip: {
             screens: {
-              TabTwoScreen: 'two',
+              TripScreen: 'tripscreen',
             },
           },
         },

@@ -10,40 +10,18 @@ import Banner from '../components/Banner';
 import Popup from '../components/Popup';
 
 
-class HomeScreen extends React.Component {
-  // constructor(props){
-  //   super(props);
-
-  // }
-
-  // state = { showPopup: false};
+class TripScreen extends React.Component {
 
   render() {
     return (
       <View style={styles.container}>
         <Banner/>
-        <Text style={styles.title}>Trippy</Text>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <TripCard title="test" dates="Mar 3-Mar 7"/>
-        <AddButton/>
-        <Popup></Popup>
+        <EditScreenInfo path="/screens/TabOneScreen.tsx" />
       </View>
     );
   }
 }
-
-// export default function HomeScreen() {
-//   return (
-//     <View style={styles.container}>
-//       <Banner/>
-//       <Text style={styles.title}>Trippy</Text>
-//       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-//       <TripCard title="test" dates="Mar 3-Mar 7"/>
-//       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-//       <AddButton/>
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -63,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default TripScreen;
