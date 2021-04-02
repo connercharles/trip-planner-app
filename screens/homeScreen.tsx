@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { Dimensions, TouchableOpacity, StyleSheet, Button, View, Text } from 'react-native';
+import { Dimensions, StyleSheet, Button, View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import Modal from 'react-native-modal';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
@@ -47,7 +49,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Banner showBack={false}/>
       <View testID="cardHolder" style= {styles.cardHolder}>
         {tripList.map((trip) => {
@@ -118,7 +120,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         </Modal>
       </View>
       <AddButton onPress={showPopup}/>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -130,11 +132,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   cardHolder: {
     flex: 2,
