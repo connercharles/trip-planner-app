@@ -36,10 +36,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const hidePopup = () => setPopupShow(false);
 
   const makeNewTrip = () => {
-    if (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "") {
+    if (newTripTitle != "" || (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "")) {
 
       setTripList(arr => [...arr, {id : arr.length + 1, location: newTripTitle, startDate: newTripStartDate, endDate: newTripEndDate}]);
-      
       setNewTripStartDate("");
       setNewTripEndDate("");
       setNewTripText("");
@@ -53,7 +52,10 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
       <Banner showBack={false}/>
       <View testID="cardHolder" style= {styles.cardHolder}>
         {tripList.map((trip) => {
-          return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-\n" + trip.endDate} onPress={() => navigation.push('Trip')}/>
+          if (trip.startDate && trip.endDate)
+            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-\n" + trip.endDate} onPress={() => navigation.push('Trip')}/>
+          else
+            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate} onPress={() => navigation.push('Trip')}/>
         })}
         <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
           <View style={{backgroundColor:Colors.white, marginVertical:50 ,marginHorizontal:10, padding:40, borderRadius:10, flex:1}}>
