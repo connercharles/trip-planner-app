@@ -1,4 +1,3 @@
-import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
