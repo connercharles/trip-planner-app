@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {useState} from 'react';
-import { Dimensions, TouchableOpacity, StyleSheet, Button, View, Text } from 'react-native';
+import { Dimensions, TouchableOpacity, ScrollView, StyleSheet, Button, View, Text } from 'react-native';
 import Modal from 'react-native-modal';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
@@ -27,8 +27,6 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const [newTripEndDate, setNewTripEndDate] = useState("");
 
   const showPopup = () => {
-    console.log("Height" + Dimensions.get('window').height);
-    console.log("Wid" + Dimensions.get('window').width);
     setPopupShow(true);
   };
   const hidePopup = () => setPopupShow(false);
@@ -46,77 +44,82 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
     }
   }
 
+  //modal data- pass to read: popupShow : boolean , 
+  //            pass for callback: hidePopup : (() => void) , setNewTripText(String)
+
   return (
     <View style={styles.container}>
       <Banner showBack={false}/>
-      <View testID="cardHolder" style= {styles.cardHolder}>
-        {tripList.map((trip) => {
-          return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-\n" + trip.endDate} onPress={() => navigation.push('Trip')}/>
-        })}
-        <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
-          <View style={{backgroundColor:Colors.white, marginVertical:50 ,marginHorizontal:10, padding:40, borderRadius:10, flex:1}}>
-            <Text style={{ fontSize: 40 }}>New Trip</Text>
-            <View style={{justifyContent:'center', marginTop:50}}>
-              <TextInput 
-                style={styles.input}
-                onChangeText={setNewTripText}
-                value={newTripTitle}
-                />
-                <DatePicker
-                  style={{marginTop: 20, width: 200}}
-                  date={newTripStartDate}
-                  mode="date"
-                  placeholder="Start Date"
-                  format="MMM D YYYY"
-                  minDate="2021-01-01"
-                  maxDate="2023-12-31"
-                  confirmBtnText="Confirm"
-                  cancelBtnText="Cancel"
-                  customStyles={{
-                    dateIcon: {
-                      position: 'absolute',
-                      left: 0,
-                      top: 4,
-                      marginLeft: 0
-                    },
-                    dateInput: {
-                      marginLeft: 36
-                    }
-                    // ... You can check the source to find the other keys.
-                  }}
-                  onDateChange={(date) => {setNewTripStartDate(date.toString())}}
-                />
-                <DatePicker
-                  style={{marginTop: 20, width: 200}}
-                  date={newTripEndDate}
-                  mode="date"
-                  placeholder="End Date"
-                  format="MMM D YYYY"
-                  minDate="2021-01-01"
-                  maxDate="2023-12-31"
-                  confirmBtnText="Confirm"
-                  cancelBtnText="Cancel"
-                  customStyles={{
-                    dateIcon: {
-                      position: 'absolute',
-                      left: 0,
-                      top: 4,
-                      marginLeft: 0
-                    },
-                    dateInput: {
-                      marginLeft: 36
-                    }
-                    // ... You can check the source to find the other keys.
-                  }}
-                  onDateChange={(date) => {setNewTripEndDate(date)}}
-                />
+      <ScrollView>
+        <View testID="cardHolder" style={styles.cardHolder}>
+          {tripList.map((trip) => {
+            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-\n" + trip.endDate} onPress={() => navigation.push('Trip')}/>
+          })}
+          <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
+            <View style={{backgroundColor:Colors.white, marginVertical:50 ,marginHorizontal:10, padding:40, borderRadius:10, flex:1}}>
+              <Text style={{ fontSize: 40 }}>New Trip</Text>
+              <View style={{justifyContent:'center', marginTop:50}}>
+                <TextInput 
+                  style={styles.input}
+                  onChangeText={setNewTripText}
+                  value={newTripTitle}
+                  />
+                  <DatePicker
+                    style={{marginTop: 20, width: 200}}
+                    date={newTripStartDate}
+                    mode="date"
+                    placeholder="Start Date"
+                    format="MMM D YYYY"
+                    minDate="2021-01-01"
+                    maxDate="2023-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 0,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 36
+                      }
+                      // ... You can check the source to find the other keys.
+                    }}
+                    onDateChange={(date) => {setNewTripStartDate(date.toString())}}
+                  />
+                  <DatePicker
+                    style={{marginTop: 20, width: 200}}
+                    date={newTripEndDate}
+                    mode="date"
+                    placeholder="End Date"
+                    format="MMM D YYYY"
+                    minDate="2021-01-01"
+                    maxDate="2023-12-31"
+                    confirmBtnText="Confirm"
+                    cancelBtnText="Cancel"
+                    customStyles={{
+                      dateIcon: {
+                        position: 'absolute',
+                        left: 0,
+                        top: 4,
+                        marginLeft: 0
+                      },
+                      dateInput: {
+                        marginLeft: 36
+                      }
+                      // ... You can check the source to find the other keys.
+                    }}
+                    onDateChange={(date) => {setNewTripEndDate(date)}}
+                  />
+              </View>
+              <View style={{marginTop:100}}>
+                <Button title={"Enter"} onPress={makeNewTrip}/>
+              </View>
             </View>
-            <View style={{marginTop:100}}>
-              <Button title={"Enter"} onPress={makeNewTrip}/>
-            </View>
-          </View>
-        </Modal>
-      </View>
+          </Modal>
+        </View>
+      </ScrollView>
       <AddButton onPress={showPopup}/>
     </View>
   );
