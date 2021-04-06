@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import Banner from '../components/Banner';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native';

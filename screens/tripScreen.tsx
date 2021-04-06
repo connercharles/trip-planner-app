@@ -13,7 +13,7 @@ import IdeaCard from '../components/IdeaCard';
 import { FontAwesome } from '@expo/vector-icons';
 
 
-export default function TripScreen(navigation: any, name : string) {
+export default function TripScreen({ navigation }: { navigation: any }, name : string) {
 
   const [tripName, setTripName] = useState("tripName"); 
 

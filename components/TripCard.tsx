@@ -12,15 +12,13 @@ export default function TripCard(
     { title, dates, onPress }: { title: string, dates: string, 
         onPress: ((event: GestureResponderEvent) => void) | undefined })
 {
-  const [loading, setLoading] = useState(true);
   const [axoisData, setAxoisData] = useState("");
 
   useEffect( () => {
-    axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ').join('_'))
+    axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ').join('+'))
       .then(response => {
         console.log('getting data from axios', response.data.hits[0].previewURL);
         setTimeout(() => {
-            setLoading(false);
             setAxoisData(response.data.hits[0].previewURL);
         }, 2000)
     })
@@ -38,7 +36,6 @@ export default function TripCard(
           <Text style={styles.dateText}>
               {dates}
           </Text>
-          {/* {(axoisData == "") ? <Image style={styles.img} source={require('../assets/images/icon.png')}/> : <Image style={styles.img} source={{uri: axoisData}} /> } */}
           <Image style={styles.img} source={{uri: axoisData}} />
       </View>
     </TouchableOpacity>

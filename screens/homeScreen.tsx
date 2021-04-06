@@ -14,10 +14,10 @@ import DatePicker from 'react-native-datepicker';
 export default function HomeScreen({ navigation }: { navigation: any }) {
 
   const [tripList, setTripList] = useState([
-    {id : 1, location : "az", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 2, location : "co", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 3, location : "ut", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 4, location : "ca", startDate : "Mar 3", endDate: "Mar 7"},
+    {id : 1, location : "Arizona", startDate : "Mar 3", endDate: "Mar 7"},
+    {id : 2, location : "Denver", startDate : "Mar 3", endDate: "Mar 7"},
+    {id : 3, location : "Moab", startDate : "Mar 3", endDate: "Mar 7"},
+    {id : 4, location : "Cali", startDate : "Mar 3", endDate: "Mar 7"},
 
   ]);
 
