@@ -21,6 +21,11 @@ export default {
               TripScreen: 'tripscreen',
             },
           },
+          PackingList: {
+            screens: {
+              PackingListScreen: 'packinglist'
+            }
+          }
         },
       },
       NotFound: '*',

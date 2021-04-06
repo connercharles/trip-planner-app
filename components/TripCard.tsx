@@ -1,22 +1,45 @@
-import React from 'react';
-import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, Text, Image } from 'react-native';
 
 import Colors from '../constants/Colors';
+
+// API Key for an accound with Pixabay. TODO: Change when in prod.
+const api_key = '20981500-b637fa19db287adce1bdca1eb';
+const api_domain = 'https://pixabay.com/api/';
 
 export default function TripCard(
     { title, dates, onPress }: { title: string, dates: string, 
         onPress: ((event: GestureResponderEvent) => void) | undefined })
 {
+  const [loading, setLoading] = useState(true);
+  const [axoisData, setAxoisData] = useState("");
+
+  useEffect( () => {
+    axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ').join('_'))
+      .then(response => {
+        console.log('getting data from axios', response.data.hits[0].previewURL);
+        setTimeout(() => {
+            setLoading(false);
+            setAxoisData(response.data.hits[0].previewURL);
+        }, 2000)
+    })
+    .catch(error => {
+        console.log(error);
+    });
+  })
+
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <View>
           <Text style={styles.titleText}>
               {title}
           </Text>
-
           <Text style={styles.dateText}>
               {dates}
           </Text>
+          {/* {(axoisData == "") ? <Image style={styles.img} source={require('../assets/images/icon.png')}/> : <Image style={styles.img} source={{uri: axoisData}} /> } */}
+          <Image style={styles.img} source={{uri: axoisData}} />
       </View>
     </TouchableOpacity>
   );
@@ -38,5 +61,9 @@ const styles = StyleSheet.create({
       borderColor: Colors.pageBackground,
       backgroundColor: '#fff',
       // height: 300
+  },
+  img: {
+    width: 50,
+    height: 50
   }
 });

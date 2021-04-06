@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {useState} from 'react';
 import { Dimensions, TouchableOpacity, ScrollView, StyleSheet, Button, View, Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 import Modal from 'react-native-modal';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
@@ -32,10 +34,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const hidePopup = () => setPopupShow(false);
 
   const makeNewTrip = () => {
-    if (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "") {
+    if (newTripTitle != "" || (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "")) {
 
       setTripList(arr => [...arr, {id : arr.length + 1, location: newTripTitle, startDate: newTripStartDate, endDate: newTripEndDate}]);
-      
       setNewTripStartDate("");
       setNewTripEndDate("");
       setNewTripText("");
@@ -48,7 +49,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   //            pass for callback: hidePopup : (() => void) , setNewTripText(String)
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Banner showBack={false}/>
       <ScrollView>
         <View testID="cardHolder" style={styles.cardHolder}>
@@ -121,7 +122,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         </View>
       </ScrollView>
       <AddButton onPress={showPopup}/>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -133,11 +134,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
   },
   cardHolder: {
     flex: 2,
