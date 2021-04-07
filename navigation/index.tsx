@@ -5,7 +5,8 @@ import { ColorSchemeName } from 'react-native';
 import HomeScreen from '../screens/homeScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import PackingChecklist from '../screens/packingChecklist';
+import PackingChecklistScreen from '../screens/packingChecklistScreen';
+import TicketHolderScreen from '../screens/ticketHolderScreen';
 import TripScreen from '../screens/tripScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -31,7 +32,8 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Trip" component={TripScreen} />
-      <Stack.Screen name="PackingList" component={PackingChecklist} />
+      <Stack.Screen name="PackingList" component={PackingChecklistScreen} />
+      <Stack.Screen name="TicketHolder" component={TicketHolderScreen} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

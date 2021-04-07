@@ -6,6 +6,7 @@ const darkBackground = 'rgba(101, 101, 101, 0.75)';
 const mainColor = '#F27612';
 const secColor = '#2F80ED';
 const transparentBackground = "#000000aa";
+const transparent = '#ffffff00';
 
 export default {
   light: {
@@ -27,5 +28,6 @@ export default {
   pageBackground,
   white: '#ffffff',
   secColor,
-  transparentBackground
+  transparentBackground,
+  transparent
 }

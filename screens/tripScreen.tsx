@@ -13,9 +13,9 @@ import IdeaCard from '../components/IdeaCard';
 import { FontAwesome } from '@expo/vector-icons';
 
 
-export default function TripScreen({ navigation }: { navigation: any }, name : string) {
+export default function TripScreen({ navigation, route }: { navigation: any, route: any }) {
 
-  const [tripName, setTripName] = useState("tripName"); 
+  //const [tripName, setTripName] = useState("tripName"); 
 
   const [ideaList, setIdeaList] = useState([
     {id : 1, title : "Have Fun!", desc: "", link : "2255 N University Pkwy, Provo, UT 84604", date: "Mar 7"},
@@ -31,7 +31,6 @@ export default function TripScreen({ navigation }: { navigation: any }, name : s
   const [newIdeaLink, setNewIdeaLink] = useState("");
   const [newIdeaDate, setNewIdeaDate] = useState("");
   
-
   const showPopup = () => { setPopupShow(true); };
   const hidePopup = () => setPopupShow(false);
 
@@ -62,6 +61,16 @@ export default function TripScreen({ navigation }: { navigation: any }, name : s
 
   const showTripOptions = () => { setTripOptionsShow(true) }
   const hideTripOptions = () => { setTripOptionsShow(false) }
+  
+  const launchPackingChecklist = () => {
+    setTripOptionsShow(false);
+    navigation.push('PackingList', {name: route.params.name});
+  }
+
+  const launchTicketHolder = () => {
+    setTripOptionsShow(false);
+    navigation.push('TicketHolder', {name: route.params.name});
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -69,10 +78,10 @@ export default function TripScreen({ navigation }: { navigation: any }, name : s
 
       {/* <Popup popupShow={popupShow}/> */}
       <View style={styles.nameBar}>
-        <Text style={styles.tripName}>{tripName}</Text>
+        <Text style={styles.tripName}>{route.params.name}</Text>
         <View style={styles.circle}>
           <TouchableOpacity onPress={showTripOptions}>
-            <FontAwesome name='dot-circle-o' size={20} style={styles.icon}></FontAwesome>
+            <FontAwesome name='ellipsis-v' size={23} style={styles.icon}></FontAwesome>
           </TouchableOpacity>
           <Modal isVisible={tripOptionsShow} onBackdropPress={hideTripOptions} animationIn='fadeIn' animationOut='fadeOut'>
             <View style = {{backgroundColor:Colors.white, marginVertical:75, marginHorizontal:5, marginLeft: 175, marginBottom: 350,borderRadius:10, flex:1}}>
@@ -82,10 +91,10 @@ export default function TripScreen({ navigation }: { navigation: any }, name : s
               <TouchableOpacity onPress={echo}>
                 <Text style={styles.tripOptionsText}>Suggestions</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={echo}>
+              <TouchableOpacity onPress={launchTicketHolder}>
                 <Text style={styles.tripOptionsText}>Flight Tickets</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={() => navigation.push('PackingList')}>
+              <TouchableOpacity onPress={launchPackingChecklist}>
                 <Text style={styles.tripOptionsText}>Packing Checklist</Text>
               </TouchableOpacity>
 
@@ -170,8 +179,8 @@ const styles = StyleSheet.create({
     marginLeft: -30,
     borderRadius: 1000,
     borderWidth: 1,
-    borderColor: Colors.white,
-    backgroundColor: Colors.white,
+    borderColor: Colors.transparent,
+    backgroundColor: Colors.transparent,
     alignSelf:'center',
     marginRight:10
   },
