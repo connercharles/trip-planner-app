@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
       borderColor: Colors.white,
       backgroundColor: Colors.white,
       alignSelf:'center',
-      marginRight:10
+      marginRight: 10
     },
     icon: {
       alignSelf:'center',
@@ -67,7 +67,9 @@ const styles = StyleSheet.create({
       height: 30
     },
     back: {
-      paddingLeft:10,
-      alignSelf:'center'
+      position: 'absolute',
+      paddingLeft: 10,
+      alignSelf:'center',
+      zIndex: 5
     }
 });

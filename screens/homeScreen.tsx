@@ -1,14 +1,13 @@
-import * as React from 'react';
-import {useState} from 'react';
-import { TextInput, ScrollView, StyleSheet, Button, View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { TouchableOpacity, TextInput, ScrollView, StyleSheet, Button, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { FontAwesome } from '@expo/vector-icons';
 
 import Modal from 'react-native-modal';
 import AddButton from '../components/AddButton';
 import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
 import Banner from '../components/Banner';
-// import { TextInput } from 'react-native-gesture-handler';
 import DatePicker from 'react-native-datepicker';
 
 export default function HomeScreen({ navigation }: { navigation: any }) {
@@ -18,11 +17,10 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
     {id : 2, location : "Denver", startDate : "Mar 3", endDate: "Mar 7"},
     {id : 3, location : "Moab", startDate : "Mar 3", endDate: "Mar 7"},
     {id : 4, location : "Cali", startDate : "Mar 3", endDate: "Mar 7"},
-
   ]);
 
   const [popupShow, setPopupShow] = useState(false);
-
+  
   //Modal Data
   const [newTripTitle, setNewTripText] = useState("");
   const [newTripStartDate, setNewTripStartDate] = useState("");
@@ -34,7 +32,8 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   const hidePopup = () => setPopupShow(false);
 
   const makeNewTrip = () => {
-    if (newTripTitle != "" || (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "")) {
+    if ((newTripTitle != "" && newTripStartDate == "" && newTripEndDate == "")
+        || (newTripTitle != "" && newTripStartDate != "" && newTripEndDate != "")) {
 
       setTripList(arr => [...arr, {id : arr.length + 1, location: newTripTitle, startDate: newTripStartDate, endDate: newTripEndDate}]);
       setNewTripStartDate("");
@@ -65,7 +64,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                   style={styles.inputTitle}
                   onChangeText={setNewTripText}
                   value={newTripTitle}
-                  placeholder=' new trip title'
+                  placeholder=' new trip title...'
                   placeholderTextColor={Colors.white}
                   />
                   <View style={styles.dateHolder}>
@@ -93,6 +92,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                       }}
                       onDateChange={(date) => {setNewTripStartDate(date.toString())}}
                     />
+                    <TouchableOpacity style={styles.clearDate} onPress={() => setNewTripStartDate("")}>
+                      <FontAwesome name='times' size={21} color={Colors.darkBackground} />
+                    </TouchableOpacity>
                     <DatePicker
                       style={styles.inputDate}
                       date={newTripEndDate}
@@ -117,10 +119,13 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                       }}
                       onDateChange={(date) => {setNewTripEndDate(date)}}
                     />
+                    <TouchableOpacity style={styles.clearDate} onPress={() => setNewTripEndDate("")}>
+                      <FontAwesome name='times' size={21} color={Colors.darkBackground} />
+                    </TouchableOpacity>
                   </View>
               {/* </View> */}
               <View style={styles.modalBtn}>
-                <Button title={"Add Trip"} onPress={makeNewTrip}/>
+                <Button title={"Add Trip"} color={Colors.lightBlue} onPress={makeNewTrip}/>
               </View>
             </View>
           </Modal>
@@ -153,20 +158,20 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.white,
     borderRadius: 10,
 
-    // marginVertical: 75,
     marginHorizontal: 20,
-    // marginBottom: 420,
     maxHeight: 250,
 
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'space-between',
-
   },
   dateHolder: {
     marginLeft: 15,
     marginBottom: 10,
-    marginVertical: 10
+    marginVertical: 10,
+    flex: 2,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
   input: {
     height: 40,
@@ -177,7 +182,7 @@ const styles = StyleSheet.create({
     height: 50,
     margin: 12,
     borderWidth: 1,
-    backgroundColor: Colors.mainColor,
+    backgroundColor: Colors.lightOrange,
     width: '100%',
     marginHorizontal: 0,
     marginTop: 0,
@@ -193,11 +198,14 @@ const styles = StyleSheet.create({
   },
   inputDate: {
     marginBottom: 10,
-    width: 200
+    width: 200,
   },
   modalBtn: {
     marginTop: 10,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
   },
+  clearDate: {
+    margin: 10,
+  }
 });

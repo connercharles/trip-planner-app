@@ -197,10 +197,6 @@ const styles = StyleSheet.create({
     marginRight: -30,
   },
   cardHolder: {
-    // flex: 1,
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    // alignItems: 'flex-start',
     marginHorizontal: '5%',
     backgroundColor: Colors.pageBackground,
   },

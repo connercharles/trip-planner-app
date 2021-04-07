@@ -14,11 +14,11 @@ export default function IdeaCard(
           <Text style={styles.titleText}>
               {title}
           </Text>
-          <Text style={styles.titleText}>
-              {desc}
-          </Text>
-          <Text style={styles.dateText}>
+          <Text style={styles.linkText}>
               {link}
+          </Text>
+          <Text style={styles.descText}>
+              {desc}
           </Text>
           <Text style={styles.dateText}>
               {date}
@@ -30,15 +30,34 @@ export default function IdeaCard(
 
 const styles = StyleSheet.create({
   titleText: {
+    backgroundColor: Colors.lightOrange,
+    width: '100%',
+    marginHorizontal: 0,
+    marginTop: 0,
 
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    fontSize: 16,
+    color: Colors.white,
+    paddingLeft: 10,
+  },
+  descText: {
+    paddingLeft: 10,
   },
   dateText: {
-
+    paddingLeft: 10,
+  },
+  linkText: {
+    paddingLeft: 10,
+    color: Colors.secColor,
+    textDecorationLine: 'underline',
+    fontSize: 10,
+    margin: 0
   },
   card: {
       width: '100%',
       marginVertical: '2.5%',
-      padding: 10,
+      paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 1,
       borderColor: Colors.pageBackground,
