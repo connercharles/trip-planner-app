@@ -3,14 +3,13 @@ import React from 'react';
 import { Dimensions, StyleSheet, TouchableOpacity, Text, GestureResponderEvent } from 'react-native';
 
 import Colors from '../constants/Colors';
+import { FontAwesome } from '@expo/vector-icons';
 
 
 export default function AddButton({ onPress } : { onPress: ((event: GestureResponderEvent) => void) | undefined }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.text}>
-          +
-        </Text>
+      <FontAwesome style={styles.text} name='plus' size={20} color={Colors.white} />
     </TouchableOpacity>
   );
 }
@@ -30,8 +29,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.white,
-    fontSize: 32,
+    fontSize: 22,
     height: 60,
-    lineHeight: 50
+    lineHeight: 60,    
+    alignSelf: 'center'
   },
   });

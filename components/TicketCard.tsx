@@ -12,18 +12,16 @@ export default function IdeaCard(
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <View>
-        <View style={styles.title}>
-            <Text style={{textAlign:'left'}}>{title}</Text>
-         </View>
-          </View>
-          <View style={styles.banner}>
-            <Text style={styles.dateText}>
-                {date}
-            </Text>
-            <Text style={styles.dateText}>
-                {time}
-            </Text>
-          </View>
+        <Text style={styles.title}>{title}</Text>
+      </View>
+      <View style={styles.banner}>
+        <Text style={styles.dateText}>
+            {date}
+        </Text>
+        <Text style={styles.dateText}>
+            {time}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -35,20 +33,27 @@ const styles = StyleSheet.create({
     flexDirection:'row',
   },
   title: {
-    display:'flex',
-    width: '100%', 
-    marginVertical: '2.5%',
-    padding: 10,
-    borderRadius: 10,
-    borderWidth: 1
+    backgroundColor: Colors.lightOrange,
+    width: '100%',
+    marginHorizontal: 0,
+    marginTop: 0,
+    borderTopRightRadius: 10,
+    borderTopLeftRadius: 10,
+    fontSize: 20,
+    color: Colors.white,
+    paddingLeft: 10,
+    marginBottom: 10,
   },
   dateText: {
-    flex:1
+    flex:1,
+    justifyContent: 'space-between',
+    paddingLeft: 10,
+    paddingBottom: 10,
   },
   card: {
       width: '100%',
       marginVertical: '2.5%',
-      padding: 10,
+      // padding: 10,
       borderRadius: 10,
       borderWidth: 1,
       borderColor: Colors.pageBackground,

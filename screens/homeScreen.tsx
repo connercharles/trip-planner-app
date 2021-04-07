@@ -54,17 +54,15 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         <Text style={styles.title}>Trips</Text>
         <View testID="cardHolder" style={styles.cardHolder}>
           {tripList.map((trip) => {
-            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-\n" + trip.endDate} onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
+            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-" + trip.endDate} onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
           })}
           <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
             <View style={styles.modal}>
-              {/* <Text style={{ fontSize: 40 }}>New Trip</Text> */}
-              {/* <View style={{justifyContent:'center', marginTop:50}}> */}
                 <TextInput
                   style={styles.inputTitle}
                   onChangeText={setNewTripText}
                   value={newTripTitle}
-                  placeholder=' new trip title...'
+                  placeholder='new trip title...'
                   placeholderTextColor={Colors.white}
                   />
                   <View style={styles.dateHolder}>
@@ -86,8 +84,13 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                           marginLeft: 0
                         },
                         dateInput: {
-                          marginLeft: 36
-                        }
+                          marginLeft: 30,
+                          // borderBottomWidth: 0,
+                          borderTopWidth: 0,
+                          borderLeftWidth: 0,
+                          borderRightWidth: 0,
+                          maxWidth: 100,
+                          }
                         // ... You can check the source to find the other keys.
                       }}
                       onDateChange={(date) => {setNewTripStartDate(date.toString())}}
@@ -113,7 +116,12 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                           marginLeft: 0
                         },
                         dateInput: {
-                          marginLeft: 36
+                          marginLeft: 30,
+                          // borderBottomWidth: 0,
+                          borderTopWidth: 0,
+                          borderLeftWidth: 0,
+                          borderRightWidth: 0,
+                          maxWidth: 100,
                         }
                         // ... You can check the source to find the other keys.
                       }}
@@ -123,10 +131,9 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                       <FontAwesome name='times' size={21} color={Colors.darkBackground} />
                     </TouchableOpacity>
                   </View>
-              {/* </View> */}
-              <View style={styles.modalBtn}>
-                <Button title={"Add Trip"} color={Colors.lightBlue} onPress={makeNewTrip}/>
-              </View>
+                  <TouchableOpacity style={styles.modalBtn} onPress={makeNewTrip}>
+                    <Text style={styles.modalBtnText}>ADD TRIP</Text>
+                  </TouchableOpacity>
             </View>
           </Modal>
         </View>
@@ -167,7 +174,6 @@ const styles = StyleSheet.create({
   },
   dateHolder: {
     marginLeft: 15,
-    marginBottom: 10,
     marginVertical: 10,
     flex: 2,
     flexDirection: 'row',
@@ -198,12 +204,21 @@ const styles = StyleSheet.create({
   },
   inputDate: {
     marginBottom: 10,
-    width: 200,
+    // width: 200,
   },
   modalBtn: {
-    marginTop: 10,
+    height: 50,
+    backgroundColor: Colors.lightBlue,
+    width: '100%',
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
+    justifyContent: 'center'
+
+  },
+  modalBtnText: {
+    color: Colors.white,
+    fontSize: 20,
+    textAlign: 'center',
   },
   clearDate: {
     margin: 10,

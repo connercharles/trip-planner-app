@@ -1,5 +1,6 @@
 import React from "react"
-import {SafeAreaView, StyleSheet, View, Text, Button} from 'react-native';
+import {StyleSheet, View, Text, Button} from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Banner from '../components/Banner';
 import Colors from '../constants/Colors';
 import { useState } from 'react';
@@ -38,32 +39,32 @@ const styles = StyleSheet.create({
       backgroundColor: Colors.pageBackground
     },
     textContainer: {
-        flex: 2,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        alignItems: 'flex-start',
-        marginHorizontal: '5%',
-        backgroundColor: Colors.pageBackground,
+      flex: 2,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'flex-start',
+      marginHorizontal: '5%',
+      backgroundColor: Colors.pageBackground,
     },
     input: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-      },
-      tripName: {
-        flex:1,
-        flexBasis:'auto',
-        textAlign:'center',
-        fontSize: 20,
-        fontWeight: 'bold',
-        letterSpacing: 1,
-        alignSelf:'center',
-        color: 'black'
-      },
-      nameBar: {
-        width: '100%',
-        display:'flex',
-        flexDirection:'row',
-        height: 50
-      }
+      height: 40,
+      margin: 12,
+      borderWidth: 1,
+    },
+    tripName: {
+      flex:1,
+      flexBasis:'auto',
+      textAlign:'center',
+      fontSize: 25,
+      fontWeight: 'bold',
+      letterSpacing: 1,
+      alignSelf:'center',
+      color: 'black'
+    },
+    nameBar: {
+      width: '100%',
+      display:'flex',
+      flexDirection:'row',
+      height: 50
+    }
 });

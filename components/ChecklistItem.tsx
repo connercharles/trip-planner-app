@@ -23,6 +23,7 @@ export default function ChecklistItem({itemText}: {itemText: string}) {
                 disabled={false}
                 value={isChecked}
                 onValueChange={toggleChecked}
+                tintColors={{ true: Colors.secColor }}
             />
             <Text>{itemText}</Text>
         </View>
@@ -42,8 +43,8 @@ const styles = StyleSheet.create({
       alignItems:'center'
       },
       textStyle: {
-          fontSize: 15,
-          marginRight: 20,
-          textAlign:'center',
+        fontSize: 15,
+        marginRight: 20,
+        textAlign:'center',
       }
     });
