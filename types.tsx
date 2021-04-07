@@ -3,5 +3,6 @@ export type RootStackParamList = {
   Home: undefined;
   Trip: undefined;
   PackingList: undefined;
+  TicketHolder: undefined;
   NotFound: undefined;
 };

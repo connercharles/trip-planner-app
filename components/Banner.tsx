@@ -11,7 +11,7 @@ export default function Banner({ showBack }: { showBack: boolean }) {
 
   let backBtn;
   if(showBack) {
-    backBtn = <TouchableOpacity style={styles.back} onPress={() => navigation.navigate('Home')}>
+    backBtn = <TouchableOpacity style={styles.back} onPress={() => navigation.goBack()}>
                 <FontAwesome name='arrow-left' size={21} color={Colors.white} />
               </TouchableOpacity>
   }
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
       flex:1,
       flexBasis:'auto',
       textAlign:'center',
-      fontSize: 20,
+      fontSize: 25,
       fontWeight: 'bold',
       fontFamily: 'allan',
       fontStyle: 'italic',

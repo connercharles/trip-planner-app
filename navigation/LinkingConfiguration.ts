@@ -25,7 +25,12 @@ export default {
             screens: {
               PackingListScreen: 'packinglist'
             }
-          }
+          },
+          TicketHolder: {
+            screens: {
+              TicketHolderScreen: 'ticketholder'
+            },
+          },
         },
       },
       NotFound: '*',

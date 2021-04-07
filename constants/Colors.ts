@@ -8,6 +8,7 @@ const secColor = '#2F80ED';
 const transparentBackground = "#000000aa";
 const lightOrange = '#F2A86D';
 const lightBlue = '#77A6ED';
+const transparent = '#ffffff00';
 
 export default {
   light: {
@@ -33,4 +34,5 @@ export default {
   black: '#000000',
   lightBlue,
   lightOrange,
+  transparent
 }
