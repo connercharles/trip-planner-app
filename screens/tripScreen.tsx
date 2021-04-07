@@ -70,12 +70,12 @@ export default function TripScreen({ navigation }: { navigation: any }, name : s
       {/* <Popup popupShow={popupShow}/> */}
       <View style={styles.nameBar}>
         <Text style={styles.tripName}>{tripName}</Text>
-        <View style={styles.circle}>
+        <View style={styles.ellipsisHolder}>
           <TouchableOpacity onPress={showTripOptions}>
-            <FontAwesome name='dot-circle-o' size={20} style={styles.icon}></FontAwesome>
+            <FontAwesome name='ellipsis-v' size={20} style={styles.icon}></FontAwesome>
           </TouchableOpacity>
           <Modal isVisible={tripOptionsShow} onBackdropPress={hideTripOptions} animationIn='fadeIn' animationOut='fadeOut'>
-            <View style = {{backgroundColor:Colors.white, marginVertical:75, marginHorizontal:5, marginLeft: 175, marginBottom: 350,borderRadius:10, flex:1}}>
+            <View style = {styles.modalView}>
               <TouchableOpacity onPress={echo}>
                 <Text style={{marginLeft: 5, marginTop: 10, fontSize:16}}>Schedule</Text>
               </TouchableOpacity>
@@ -159,26 +159,31 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.pageBackground,
   },
   nameBar: {
-    width: '100%',
+    // width: '100%',
     display:'flex',
     flexDirection:'row',
     height: 50
   },
-  circle: {
+  ellipsisHolder: {
     width: 30,
     height: 30,
     marginLeft: -30,
-    borderRadius: 1000,
-    borderWidth: 1,
-    borderColor: Colors.white,
-    backgroundColor: Colors.white,
     alignSelf:'center',
     marginRight:10
+  },
+  modalView: {
+    backgroundColor:Colors.white,
+    marginVertical: 75,
+    marginHorizontal: 5,
+    marginLeft: 175,
+    marginBottom: 350,
+    borderRadius: 10,
+    flex:1
   },
   icon: {
     alignSelf:'center',
     lineHeight: 30,
-    height: 30
+    height: 30,
   },
   tripName: {
     flex:1,
@@ -188,7 +193,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     letterSpacing: 1,
     alignSelf:'center',
-    color: 'black'
+    color: 'black',
+    marginRight: -30,
   },
   cardHolder: {
     // flex: 1,

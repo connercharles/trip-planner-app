@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
       display:'flex',
       flexDirection:'row',
       height: 50,
-      },
+    },
     logo: {
       flex:1,
       flexBasis:'auto',
@@ -47,7 +47,8 @@ const styles = StyleSheet.create({
       fontStyle: 'italic',
       letterSpacing: 1,
       color: Colors.white,
-      alignSelf:'center'
+      alignSelf:'center',
+      marginRight: -15,
     },
     circle: {
       width: 30,
