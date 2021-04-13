@@ -69,6 +69,11 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
     navigation.push('TicketHolder', {name: route.params.name});
   }
 
+  const launchIdeasScreen = () => {
+    setTripOptionsShow(false);
+    navigation.push('IdeasBrowserScreen', {name: route.params.name});
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Banner showBack={true}/>
@@ -85,7 +90,7 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
                 <TouchableOpacity onPress={echo}>
                   <Text style={{marginLeft: 5, marginTop: 10, fontSize:16}}>Schedule</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={echo}>
+                <TouchableOpacity onPress={launchIdeasScreen}>
                   <Text style={styles.tripOptionsText}>Suggestions</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={launchTicketHolder}>
