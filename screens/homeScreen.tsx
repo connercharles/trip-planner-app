@@ -54,7 +54,12 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         <Text style={styles.title}>Trips</Text>
         <View testID="cardHolder" style={styles.cardHolder}>
           {tripList.map((trip) => {
-            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-" + trip.endDate} onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
+            return <TripCard key={trip.id} 
+              title={trip.location} 
+              dates={
+                (trip.startDate === '') ? '' : trip.startDate + "-" + trip.endDate
+              } 
+              onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
           })}
           <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
             <View style={styles.modal}>

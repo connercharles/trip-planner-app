@@ -1,7 +1,7 @@
 import { ScrollView } from "react-native-gesture-handler";
 import DraggableFlatList, { RenderItemParams, } from "react-native-draggable-flatlist";
 import React, { useState, useCallback } from 'react';
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, View } from "react-native";
 import Colors from "../constants/Colors";
 
 export default function Calendar({ data, startDate, endDate }: 
@@ -25,7 +25,6 @@ export default function Calendar({ data, startDate, endDate }:
     );
 
     const filterData = () => {
-      console.log(data);
       let updatedData: Item[] = [];
       data.forEach((item) => {
         if (item.date === '' || (startDate !== undefined && item.date.includes(startDate))) {
