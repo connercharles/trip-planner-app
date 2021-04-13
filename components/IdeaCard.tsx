@@ -2,6 +2,7 @@ import React from 'react';
 import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 
 import Colors from '../constants/Colors';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function IdeaCard(
     { title, desc, link, date, onPress }:
@@ -20,9 +21,14 @@ export default function IdeaCard(
           <Text style={styles.descText}>
               {desc}
           </Text>
-          <Text style={styles.dateText}>
-              {date}
-          </Text>
+          <View style={styles.dateHolder}>
+            <TouchableOpacity>
+              <FontAwesome5 name='calendar-check' size={15} style={styles.icon} color={Colors.secColor}></FontAwesome5>
+            </TouchableOpacity>
+            <Text style={styles.dateText}>
+                {date}
+            </Text>
+          </View>
       </View>
     </TouchableOpacity>
   );
@@ -45,7 +51,12 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   dateText: {
+  },
+  dateHolder: {
     paddingLeft: 10,
+    flex: 2,
+    flexDirection: 'row',
+    marginTop: 3,
   },
   linkText: {
     paddingLeft: 10,
@@ -63,5 +74,10 @@ const styles = StyleSheet.create({
       borderColor: Colors.pageBackground,
       backgroundColor: '#fff',
       // height: 300
-  }
+  },
+  icon: {
+    justifyContent: 'center',
+    marginRight: 5,
+    marginTop: 3,
+  },
 });

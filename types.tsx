@@ -4,5 +4,6 @@ export type RootStackParamList = {
   Trip: undefined;
   PackingList: undefined;
   TicketHolder: undefined;
+  Schedule: undefined;
   NotFound: undefined;
 };

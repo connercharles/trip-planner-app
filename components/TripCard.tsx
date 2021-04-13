@@ -17,7 +17,7 @@ export default function TripCard(
   useEffect( () => {
     axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ')) // title.split(' ').join('+')
       .then(response => {
-        // console.log('getting data from axios', response.data.hits[0].webformatURL);
+        console.log('getting data from axios', response.data.hits[0].webformatURL);
         setTimeout(() => {
             setAxoisData(response.data.hits[0].webformatURL);
         }, 2000)
@@ -25,7 +25,7 @@ export default function TripCard(
     .catch(error => {
         console.log(error);
     });
-  })
+  }, []);
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
