@@ -6,5 +6,6 @@ export type RootStackParamList = {
   TicketHolder: undefined;
   TicketScreen: undefined;
   IdeasBrowserScreen: undefined;
+  Schedule: undefined;
   NotFound: undefined;
 };

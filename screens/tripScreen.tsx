@@ -1,4 +1,4 @@
-import { ScrollView, TextInput, StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import { ScrollView, TextInput, StyleSheet, View, Text, Button, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AddButton from '../components/AddButton';
@@ -15,9 +15,10 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function TripScreen({ navigation, route }: { navigation: any, route: any }) {
 
   const [ideaList, setIdeaList] = useState([
-    {id : 1, title : "Have Fun!", desc: "", link : "2255 N University Pkwy, Provo, UT 84604", date: "Mar 7"},
-    {id : 2, title : "Party Hard", desc: "Bring a phone charger", link : "", date: ""},
-    {id : 3, title : "Debug later", desc: "If I'm bored.", link : "", date: ""},
+    {id : 1, title : "Camelback Mountain", desc: "It's the Echo Trailhead", link : "4925 E McDonald Dr, Phoenix, AZ 85018", date: "April 23"},
+    {id : 2, title : "Jessica's Party", desc: "Bring a phone charger", link : "", date: "April 22, 7:00pm"},
+    {id : 3, title : "Fashion Square Mall", desc: "", link : "", date: ""},
+    {id : 4, title : "Last Chance", desc: "", link : "1919 E Camelback Rd, Phoenix, AZ 85016", date: ""},
   ]);
 
   const [popupShow, setPopupShow] = useState(false);
@@ -59,6 +60,11 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
   const showTripOptions = () => { setTripOptionsShow(true) }
   const hideTripOptions = () => { setTripOptionsShow(false) }
   
+  const launchSchedule = () => {
+    setTripOptionsShow(false);
+    navigation.push('Schedule', {name: route.params.name, ideas: ideaList});
+  }
+
   const launchPackingChecklist = () => {
     setTripOptionsShow(false);
     navigation.push('PackingList', {name: route.params.name});
@@ -80,14 +86,14 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
 
       <ScrollView>
         <View style={styles.nameBar}>
-          <Text style={styles.tripName}>{route.params.name}</Text>
-          <View style={styles.ellipsisHolder}>
+          <Text style={styles.tripName}>{"Plans for " + route.params.name}</Text>
+          <View style={styles.moreIconHolder}>
             <TouchableOpacity onPress={showTripOptions}>
-              <FontAwesome name='ellipsis-v' size={23} style={styles.icon}></FontAwesome>
+              <FontAwesome name='th' size={20} style={styles.icon}></FontAwesome>
             </TouchableOpacity>
             <Modal isVisible={tripOptionsShow} onBackdropPress={hideTripOptions} animationIn='fadeIn' animationOut='fadeOut'>
               <View style = {styles.modalMore}>
-                <TouchableOpacity onPress={echo}>
+                <TouchableOpacity onPress={launchSchedule}>
                   <Text style={{marginLeft: 5, marginTop: 10, fontSize:16}}>Schedule</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={launchIdeasScreen}>
@@ -99,7 +105,6 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
                 <TouchableOpacity onPress={launchPackingChecklist}>
                   <Text style={styles.tripOptionsText}>Packing Checklist</Text>
                 </TouchableOpacity>
-
               </View>
             </Modal>
           </View>
@@ -188,7 +193,7 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     height: 50
   },
-  ellipsisHolder: {
+  moreIconHolder: {
     width: 30,
     height: 30,
     marginLeft: -30,
@@ -296,6 +301,7 @@ const styles = StyleSheet.create({
   cardHolder: {
     marginHorizontal: '5%',
     backgroundColor: Colors.pageBackground,
+    paddingBottom: Math.round(Dimensions.get('window').height - 200),
   },
   input: {
     height: 40,

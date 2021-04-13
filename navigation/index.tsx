@@ -7,6 +7,7 @@ import IdeasBrowserScreen from '../screens/ideasBrowserScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import PackingChecklistScreen from '../screens/packingChecklistScreen';
+import ScheduleScreen from '../screens/scheduleScreen';
 import TicketHolderScreen from '../screens/ticketHolderScreen';
 import TicketScreen from '../screens/ticketScreen';
 import TripScreen from '../screens/tripScreen';
@@ -38,6 +39,7 @@ function RootNavigator() {
       <Stack.Screen name="TicketHolder" component={TicketHolderScreen} />
       <Stack.Screen name="TicketScreen" component={TicketScreen} />
       <Stack.Screen name="IdeasBrowserScreen" component={IdeasBrowserScreen} />
+      <Stack.Screen name="Schedule" component={ScheduleScreen} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
   );

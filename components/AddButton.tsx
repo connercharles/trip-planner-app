@@ -13,7 +13,7 @@ export default function AddButton({ onPress } : { onPress: ((event: GestureRespo
     </TouchableOpacity>
   );
 }
-    
+
 const styles = StyleSheet.create({
   button: {
     position:'absolute',

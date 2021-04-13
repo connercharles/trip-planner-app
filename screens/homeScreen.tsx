@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TouchableOpacity, TextInput, ScrollView, StyleSheet, Button, View, Text } from 'react-native';
+import { TouchableOpacity, TextInput, ScrollView, StyleSheet, Button, View, Text, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -13,10 +13,10 @@ import DatePicker from 'react-native-datepicker';
 export default function HomeScreen({ navigation }: { navigation: any }) {
 
   const [tripList, setTripList] = useState([
-    {id : 1, location : "Arizona", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 2, location : "Denver", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 3, location : "Moab", startDate : "Mar 3", endDate: "Mar 7"},
-    {id : 4, location : "Cali", startDate : "Mar 3", endDate: "Mar 7"},
+    {id : 1, location : "Arizona", startDate : "April 22", endDate: "April 24"},
+    {id : 2, location : "Denver", startDate : "Aug 1", endDate: "Aug 5"},
+    {id : 3, location : "Moab", startDate : "", endDate: ""},
+    {id : 4, location : "Cali", startDate : "May 13", endDate: "May 17"},
   ]);
 
   const [popupShow, setPopupShow] = useState(false);
@@ -54,7 +54,12 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
         <Text style={styles.title}>Trips</Text>
         <View testID="cardHolder" style={styles.cardHolder}>
           {tripList.map((trip) => {
-            return <TripCard key={trip.id} title={trip.location} dates={trip.startDate + "-" + trip.endDate} onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
+            return <TripCard key={trip.id} 
+              title={trip.location} 
+              dates={
+                (trip.startDate === '') ? '' : trip.startDate + "-" + trip.endDate
+              } 
+              onPress={() => navigation.navigate('Trip', {name : trip.location})}/>
           })}
           <Modal isVisible={popupShow} onBackdropPress={hidePopup}>
             <View style={styles.modal}>
@@ -160,6 +165,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     marginHorizontal: '5%',
     backgroundColor: Colors.pageBackground,
+    paddingBottom: Math.round(Dimensions.get('window').height - 240),
   },
   modal: {
     backgroundColor: Colors.white,
