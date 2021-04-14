@@ -5,10 +5,11 @@ import { GestureResponderEvent, StyleSheet, TouchableOpacity, View, Text, Image}
 import { FontAwesome } from '@expo/vector-icons';
 import {useEffect, useState} from 'react';
 import axios from 'axios';
+import { visible } from 'chalk';
 
 export default function IdeaBrowserCard({ title, link, onPress }:
     { title: string, link: string,
-        onPress: ((event: GestureResponderEvent) => void) | undefined }) {
+        onPress: ((event: GestureResponderEvent, t: string, l : string) => void)}) {
 
     // API Key for an accound with Pixabay. TODO: Change when in prod.
     const api_key = '20981500-b637fa19db287adce1bdca1eb';
@@ -16,18 +17,25 @@ export default function IdeaBrowserCard({ title, link, onPress }:
 
     const [axoisData, setAxoisData] = useState("");
 
-    // useEffect( () => {
-    //     axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ')) // title.split(' ').join('+')
-    //       .then(response => {
-    //         // console.log('getting data from axios', response.data.hits[0].webformatURL);
-    //         setTimeout(() => {
-    //             setAxoisData(response.data.hits[0].webformatURL);
-    //         }, 2000)
-    //     })
-    //     .catch(error => {
-    //         console.log(error);
-    //     });
-    //   })
+    useEffect( () => {
+        axios.get(api_domain + '?key=' + api_key + '&q=' + title.split(' ').join('+')) // title.split(' ').join('+')
+          .then(response => {
+            //console.log('getting data from axios', response.data.hits[0].webformatURL);
+            setTimeout(() => {
+                setAxoisData(response.data.hits[0].webformatURL);
+            }, 2000)
+        })
+        .catch(error => {
+            console.log(error);
+        });
+      })
+
+      const [addButtonDisabled, setAddButtonDisabled] = useState(false);
+
+      const addIdea = (e : GestureResponderEvent, t: string, l: string) => {
+        onPress(e, t, l);
+        setAddButtonDisabled(true);
+      }
 
      return (
     //     <View style={styles.container}>
@@ -42,7 +50,7 @@ export default function IdeaBrowserCard({ title, link, onPress }:
     //             </View>
     //         </View>
     //     </View>
-    <TouchableOpacity style={styles.card}>
+    <View style={styles.card}>
       <View style={styles.ideaText}>
           <Text style={styles.titleText}>
               {title}
@@ -50,14 +58,14 @@ export default function IdeaBrowserCard({ title, link, onPress }:
           <Text style={styles.linkText}>
               {link}
           </Text>
-          <TouchableOpacity onPress ={onPress}>
-            <FontAwesome name='plus' size={23} style={styles.icon}></FontAwesome>
+          <TouchableOpacity disabled={addButtonDisabled} onPress ={(e) => {addIdea(e, title, link)} }>
+            <FontAwesome name='plus' size={23} style={{marginLeft: 10, lineHeight: 23, height: 20, opacity: addButtonDisabled ? 0 : 1}}></FontAwesome>
           </TouchableOpacity>
       </View>
       <View style= {styles.ideaPicture}>
-        
+        <Image style={styles.img} source={{uri: axoisData}} />
       </View>
-    </TouchableOpacity>
+    </View>
 
      )
 }
@@ -99,11 +107,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         // height: 300
     },
-    icon: {
-        marginLeft: 10,
-        lineHeight: 23,
-        height: 20,
-    },
     ideaText: {
         flex:2,
     },
@@ -113,7 +116,7 @@ const styles = StyleSheet.create({
     },
     img: {
         width: '100%',
-        height: '100%',
+        height: 100,
         borderBottomLeftRadius: 10,
         borderBottomRightRadius: 10,
         overflow: 'hidden'

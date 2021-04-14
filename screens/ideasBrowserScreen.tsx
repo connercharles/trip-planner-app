@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import Banner from '../components/Banner';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, ScrollView, View, Text, TextInput, TouchableOpacity, GestureResponderEvent} from 'react-native';
 import Colors from '../constants/Colors';
 import ChecklistItem from '../components/ChecklistItem';
 import AddButton from '../components/AddButton';
@@ -13,13 +13,15 @@ import IdeaBrowserCard from '../components/IdeaBrowserCard';
 export default function IdeasBrowserScreen ({navigation, route}: {navigation: any, route: any}) {
 
   const [ideaList, setIdeaList] = useState([
-    {id : 1, title : "Have Fun!", link : "2255 N University Pkwy, Provo, UT 84604"},
-    {id : 2, title : "Party Hard", link : ""},
-    {id : 3, title : "Debug later", link : ""},
+    {id : 1, title : "Washington Monument", link : "225 N Washington Pkwy, Tempe, AZ 76685"},
+    {id : 2, title : "Grand Canyon", link : "S Entrance Rd, Grand Canyon Village, AZ 86023"},
+    {id : 3, title : "Desert Botanical Garden", link : "1201 N Galvin Pkwy, Phoenix, AZ 85008"},
+    {id : 4, title : "The Torch Theater", link : "4721 N Central Ave, Phoenix, AZ 85012"},
+    {id : 5, title : "Desert Canyon", link : "9431 W Northern Ave, Glendale, AZ 85305"}
   ]);
 
-  const echo = (title : string, link : string) => {
-    console.log("echo " + title + " " + link);
+  const addIdeaFromBrowser = (event : GestureResponderEvent, titleTxt : string, linkTxt : string) => {
+    navigation.navigate("Trip", {newIdeaTitle : titleTxt, newIdeaLink : linkTxt});
   }
 
     return (
@@ -31,7 +33,7 @@ export default function IdeasBrowserScreen ({navigation, route}: {navigation: an
           </View>
         <ScrollView>
             {ideaList.map((idea) => {
-              return <IdeaBrowserCard key={idea.id} title={idea.title} link={idea.link} onPress={echo}/>
+              return <IdeaBrowserCard key={idea.id} title={idea.title} link={idea.link} onPress={addIdeaFromBrowser}/>
             })}
         </ScrollView>
     </SafeAreaView>

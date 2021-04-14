@@ -1,4 +1,4 @@
-import { ScrollView, TextInput, StyleSheet, View, Text, Button, TouchableOpacity, Dimensions } from 'react-native';
+import { ScrollView, TextInput, StyleSheet, View, Text, Button, TouchableOpacity, Dimensions, GestureResponderEvent } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import AddButton from '../components/AddButton';
@@ -13,6 +13,13 @@ import { FontAwesome } from '@expo/vector-icons';
 
 
 export default function TripScreen({ navigation, route }: { navigation: any, route: any }) {
+
+  useEffect ( () => {
+    console.log("using effect")
+    if (route.params?.newIdeaTitle && route.params?.newIdeaLink) {
+      setIdeaList(arr => [...arr, {id: arr.length + 1, title: route.params?.newIdeaTitle, desc: "", link: route.params?.newIdeaLink, date: ""}]);
+    }
+  }, [route.params])
 
   const [ideaList, setIdeaList] = useState([
     {id : 1, title : "Camelback Mountain", desc: "It's the Echo Trailhead", link : "4925 E McDonald Dr, Phoenix, AZ 85018", date: "April 23"},
@@ -51,8 +58,7 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
     }
   }
 
-  const echo = () => {
-    console.log("echo");
+  const addNewIdeaFromBrowser = (titleTxt : string, linkTxt : string) => {
   }
 
   const [tripOptionsShow, setTripOptionsShow] = useState(false);
