@@ -89,7 +89,7 @@ export default function TripScreen({ navigation, route }: { navigation: any, rou
             <Modal isVisible={tripOptionsShow} onBackdropPress={hideTripOptions} animationIn='fadeIn' animationOut='fadeOut'>
               <View style = {styles.modalMore}>
                 <TouchableOpacity onPress={launchSchedule}>
-                  <Text style={{marginLeft: 5, marginTop: 10, fontSize:16}}>Schedule</Text>
+                  <Text style={styles.tripOptionsText}>Schedule</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={echo}>
                   <Text style={styles.tripOptionsText}>Suggestions</Text>
@@ -202,16 +202,13 @@ const styles = StyleSheet.create({
     marginRight:10
   },
   modalMore: {
+    position: 'absolute',
+    top: 45,
+    right: 0,
     backgroundColor:Colors.white,
-    // marginTop: 20,
-    marginHorizontal: 2,
-    marginLeft: 200,
-    marginBottom: 500,
     borderRadius: 10,
-    paddingBottom: 10,
+    paddingRight: 10,
     paddingLeft: 5,
-    // flex:1,
-    justifyContent: 'space-between',
   },
   modalAdd: {
     backgroundColor: Colors.white, 
@@ -222,7 +219,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     maxHeight: 275,
     flexDirection: 'column',
-    // justifyContent: 'space-between',
   },
   inputTitle: {
     height: 50,
@@ -305,7 +301,7 @@ const styles = StyleSheet.create({
   },
   tripOptionsText: {
     marginLeft: 5,
-    marginTop: 15, 
-    fontSize: 16
+    marginVertical: 7, 
+    fontSize: 16,
   }
 });
