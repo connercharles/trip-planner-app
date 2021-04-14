@@ -31,6 +31,16 @@ export default {
               TicketHolderScreen: 'ticketholder'
             },
           },
+          TicketScreen: {
+            screens: {
+              TicketScreen: 'ticketscreen'
+            },
+          },
+          IdeasBrowserScreen: {
+            screens: {
+              IdeasBrowserScreen: 'ideasbrowserscreen'
+            },
+          },
         },
       },
       NotFound: '*',

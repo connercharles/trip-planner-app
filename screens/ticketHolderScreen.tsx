@@ -14,8 +14,8 @@ export default function TicketHolderScreen({navigation, route}: {navigation: any
         {id: 2, title: "PHX > SLC", date: "Tue 17 Jan", time: "9:30 AM-2:00 PM"}
     ])
 
-    const showTicketScreen = () => {
-        
+    const showTicketScreen = (fName : string, fDate: string, fTime : string) => {
+        navigation.push('TicketScreen', {flightName: fName, flightDate: fDate, flightTime: fTime});
     }
 
     return (
@@ -26,7 +26,7 @@ export default function TicketHolderScreen({navigation, route}: {navigation: any
         </View>
         <View style={styles.textContainer}>
             {ticketList.map((item) => {
-                return <TicketCard key={item.id} title={item.title} date={item.date} time={item.time} onPress={showTicketScreen}/>
+                return <TicketCard key={item.id} title={item.title} date={item.date} time={item.time} onPress={() => showTicketScreen(item.title, item.date,item.time)}/>
             })}
         </View>
     </SafeAreaView>

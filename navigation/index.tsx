@@ -3,11 +3,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import HomeScreen from '../screens/homeScreen';
+import IdeasBrowserScreen from '../screens/ideasBrowserScreen';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import PackingChecklistScreen from '../screens/packingChecklistScreen';
 import ScheduleScreen from '../screens/scheduleScreen';
 import TicketHolderScreen from '../screens/ticketHolderScreen';
+import TicketScreen from '../screens/ticketScreen';
 import TripScreen from '../screens/tripScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -35,6 +37,8 @@ function RootNavigator() {
       <Stack.Screen name="Trip" component={TripScreen} />
       <Stack.Screen name="PackingList" component={PackingChecklistScreen} />
       <Stack.Screen name="TicketHolder" component={TicketHolderScreen} />
+      <Stack.Screen name="TicketScreen" component={TicketScreen} />
+      <Stack.Screen name="IdeasBrowserScreen" component={IdeasBrowserScreen} />
       <Stack.Screen name="Schedule" component={ScheduleScreen} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </Stack.Navigator>
