@@ -21,6 +21,11 @@ export default {
               TripScreen: 'tripscreen',
             },
           },
+          Map: {
+            screens: {
+              MapScreen: 'mapscreen',
+            },
+          },
           PackingList: {
             screens: {
               PackingListScreen: 'packinglist'

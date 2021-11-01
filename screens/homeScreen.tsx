@@ -5,6 +5,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import Modal from 'react-native-modal';
 import AddButton from '../components/AddButton';
+import MapButton from '../components/MapButton';
 import TripCard from '../components/TripCard';
 import Colors from '../constants/Colors';
 import Banner from '../components/Banner';
@@ -141,8 +142,10 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
                   </TouchableOpacity>
             </View>
           </Modal>
+          <View></View>
         </View>
       </ScrollView>
+      <MapButton onPress={navigation.navigate('Map')}/>
       <AddButton onPress={showPopup}/>
     </SafeAreaView>
   );

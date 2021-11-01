@@ -11,6 +11,7 @@ import ScheduleScreen from '../screens/scheduleScreen';
 import TicketHolderScreen from '../screens/ticketHolderScreen';
 import TicketScreen from '../screens/ticketScreen';
 import TripScreen from '../screens/tripScreen';
+import MapScreen from '../screens/mapScreen';
 import { RootStackParamList } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 
@@ -35,6 +36,7 @@ function RootNavigator() {
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Trip" component={TripScreen} />
+      <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="PackingList" component={PackingChecklistScreen} />
       <Stack.Screen name="TicketHolder" component={TicketHolderScreen} />
       <Stack.Screen name="TicketScreen" component={TicketScreen} />
